@@ -5,6 +5,7 @@ import { TextInputProps, TouchableOpacityProps, TouchableHighlightProps } from '
 declare interface CustomBtnProps extends TouchableHighlightProps {
     title: string;
     onPress: any;
+    inputMode?: 'decimal' | 'email' | 'none' | 'numeric' | 'search' | 'tel' | 'text' | 'url';
     bgVariant?: { backgroundColor?: any; borderWidth?: any; width?: any };
     textVariant?: { color?: any };
     leftIcon?: any;

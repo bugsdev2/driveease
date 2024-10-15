@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { CustomInputProps } from '@/types/types';
 import { Colors } from '@/constants/colors';
 
-const CustomInput = ({ label, placeholder, secureTextEntry = false, icon, onChangeText }: CustomInputProps) => {
+const CustomInput = ({ label, inputMode = 'text', placeholder, secureTextEntry = false, icon, onChangeText }: CustomInputProps) => {
     const [isFocused, setIsFocused] = useState(false);
     const [isBlurred, setIsBlurred] = useState(false);
 
@@ -22,6 +22,7 @@ const CustomInput = ({ label, placeholder, secureTextEntry = false, icon, onChan
                 <TextInput
                     style={styles.input}
                     placeholder={placeholder}
+                    inputMode={inputMode}
                     onFocus={() => {
                         setIsFocused(true);
                         setIsBlurred(false);

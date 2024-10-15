@@ -31,6 +31,7 @@ const SignIn = () => {
                 <CustomInput
                     label={'Email'}
                     placeholder="Enter email"
+                    inputMode="email"
                     icon={icons.email}
                     onChangeText={(value) =>
                         setForm({
