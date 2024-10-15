@@ -1,11 +1,11 @@
-import { StyleSheet, Text, Pressable, TouchableHighlight, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import React from 'react';
 import { CustomBtnProps } from '@/types/types';
 import { Colors } from '@/constants/colors';
 
 const CustomButton = ({ title, onPress, bgVariant, textVariant, leftIcon, rightIcon }: CustomBtnProps) => {
     return (
-        <TouchableHighlight
+        <TouchableOpacity
             style={[styles.buttonContainer, bgVariant]}
             onPress={onPress}
         >
@@ -24,7 +24,7 @@ const CustomButton = ({ title, onPress, bgVariant, textVariant, leftIcon, rightI
                     />
                 )}
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
     );
 };
 
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 20,
+        gap: 12,
     },
 
     buttonTitle: {

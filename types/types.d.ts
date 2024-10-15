@@ -4,11 +4,19 @@ import { TextInputProps, TouchableOpacityProps, TouchableHighlightProps } from '
 
 declare interface CustomBtnProps extends TouchableHighlightProps {
     title: string;
-    onPress?: any;
-    bgVariant?: { backgroundColor?: string; borderWidth?: number };
-    textVariant?: { color?: string };
+    onPress: any;
+    bgVariant?: { backgroundColor?: any; borderWidth?: any; width?: any };
+    textVariant?: { color?: any };
     leftIcon?: any;
     rightIcon?: any;
+}
+
+declare interface CustomInputProps extends InputFieldProps {
+    label: string;
+    placeholder: string;
+    onChangeText: (value) => void;
+    icon?: any;
+    secureTextEntry?: boolean;
 }
 
 /// NOT MINE

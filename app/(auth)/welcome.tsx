@@ -53,6 +53,7 @@ const Onboarding = () => {
                 title={isLastSlide ? 'Get Started' : 'Next'}
                 onPress={() => (isLastSlide ? router.replace('/(auth)/sign-up') : swiperRef.current?.scrollBy(1))}
             />
+            <View style={styles.bottomPadding} />
         </SafeAreaView>
     );
 };
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     swiperDot: {
         width: 30,
         height: 5,
-        backgroundColor: Colors.offwhite,
+        backgroundColor: Colors.offwhitedark,
         marginHorizontal: 2,
         borderRadius: 10,
     },
@@ -114,5 +115,9 @@ const styles = StyleSheet.create({
         fontFamily: 'Jakarta-Regular',
         fontSize: 20,
         textAlign: 'center',
+    },
+
+    bottomPadding: {
+        height: 40,
     },
 });
