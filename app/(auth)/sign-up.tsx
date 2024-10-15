@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { icons, images } from '@/constants';
 import { Colors } from '@/constants/colors';
@@ -19,7 +19,10 @@ const SignUp = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView
+            style={styles.container}
+            contentContainerStyle={styles.container2}
+        >
             <Image
                 source={images.signUpCar}
                 style={styles.image}
@@ -82,7 +85,7 @@ const SignUp = () => {
                     </Link>
                 </Text>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
@@ -92,6 +95,9 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.white,
         flex: 1,
+    },
+
+    container2: {
         alignItems: 'center',
     },
 
