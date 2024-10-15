@@ -5,7 +5,6 @@ import { Colors } from '@/constants/colors';
 
 const CustomInput = ({ label, inputMode = 'text', placeholder, secureTextEntry = false, icon, onChangeText }: CustomInputProps) => {
     const [isFocused, setIsFocused] = useState(false);
-    const [isBlurred, setIsBlurred] = useState(false);
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -14,7 +13,7 @@ const CustomInput = ({ label, inputMode = 'text', placeholder, secureTextEntry =
                     <View>
                         <Text style={styles.label}>{label}</Text>
                     </View>
-                    <View style={[styles.inputFieldContainer, isFocused && styles.inputFieldContainerOnFocus, isBlurred && styles.inputFieldContainerOnBlur]}>
+                    <View style={[styles.inputFieldContainer, isFocused && styles.inputFieldContainerOnFocus, !isFocused && styles.inputFieldContainerOnBlur]}>
                         {icon && (
                             <Image
                                 source={icon}
@@ -27,10 +26,8 @@ const CustomInput = ({ label, inputMode = 'text', placeholder, secureTextEntry =
                             inputMode={inputMode}
                             onFocus={() => {
                                 setIsFocused(true);
-                                setIsBlurred(false);
                             }}
                             onBlur={() => {
-                                setIsBlurred(true);
                                 setIsFocused(false);
                             }}
                             secureTextEntry={secureTextEntry}
