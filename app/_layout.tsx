@@ -1,7 +1,6 @@
 import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
-import { View } from 'react-native-reanimated/lib/typescript/Animated';
-import { useEffect } from 'react';
+import { StatusBar } from 'expo-status-bar';
 
 export default function RootLayout() {
     const [loaded] = useFonts({
@@ -19,25 +18,28 @@ export default function RootLayout() {
     }
 
     return (
-        <Stack>
-            <Stack.Screen
-                name="index"
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <Stack.Screen
-                name="(root)"
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <Stack.Screen
-                name="(auth)"
-                options={{
-                    headerShown: false,
-                }}
-            />
-        </Stack>
+        <>
+            <StatusBar style="dark" />
+            <Stack>
+                <Stack.Screen
+                    name="index"
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(root)"
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(auth)"
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+            </Stack>
+        </>
     );
 }
