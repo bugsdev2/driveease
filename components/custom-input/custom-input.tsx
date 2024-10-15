@@ -1,4 +1,4 @@
-import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, View, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, { useState } from 'react';
 import { CustomInputProps } from '@/types/types';
 import { Colors } from '@/constants/colors';
@@ -8,33 +8,37 @@ const CustomInput = ({ label, inputMode = 'text', placeholder, secureTextEntry =
     const [isBlurred, setIsBlurred] = useState(false);
 
     return (
-        <KeyboardAvoidingView>
-            <View>
-                <Text style={styles.label}>{label}</Text>
-            </View>
-            <View style={[styles.inputFieldContainer, isFocused && styles.inputFieldContainerOnFocus, isBlurred && styles.inputFieldContainerOnBlur]}>
-                {icon && (
-                    <Image
-                        source={icon}
-                        style={styles.iconImg}
-                    />
-                )}
-                <TextInput
-                    style={styles.input}
-                    placeholder={placeholder}
-                    inputMode={inputMode}
-                    onFocus={() => {
-                        setIsFocused(true);
-                        setIsBlurred(false);
-                    }}
-                    onBlur={() => {
-                        setIsBlurred(true);
-                        setIsFocused(false);
-                    }}
-                    secureTextEntry={secureTextEntry}
-                    onChangeText={onChangeText}
-                />
-            </View>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+                <View>
+                    <View>
+                        <Text style={styles.label}>{label}</Text>
+                    </View>
+                    <View style={[styles.inputFieldContainer, isFocused && styles.inputFieldContainerOnFocus, isBlurred && styles.inputFieldContainerOnBlur]}>
+                        {icon && (
+                            <Image
+                                source={icon}
+                                style={styles.iconImg}
+                            />
+                        )}
+                        <TextInput
+                            style={styles.input}
+                            placeholder={placeholder}
+                            inputMode={inputMode}
+                            onFocus={() => {
+                                setIsFocused(true);
+                                setIsBlurred(false);
+                            }}
+                            onBlur={() => {
+                                setIsBlurred(true);
+                                setIsFocused(false);
+                            }}
+                            secureTextEntry={secureTextEntry}
+                            onChangeText={onChangeText}
+                        />
+                    </View>
+                </View>
+            </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
     );
 };
